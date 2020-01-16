@@ -1,0 +1,25 @@
+{
+  "name": "node-db-logger",
+  "version": "0.0.2",
+  "description": "Records logs to database for better readability, performance and organization.",
+  "license": "mit",
+  "repository": "lachezargrigorov/node-db-logger",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "author": {
+    "name": "Lachezar Grigorov",
+    "email": "lachezar@grigorov.website",
+    "url": "http://grigorov.website"
+  },
+  "main": "index.js",
+  "keywords": [
+    "lachezargrigorov",
+    "logger",
+    "node",
+    "npm"
+  ],
+  "dependencies": {
+    "mongodb": "^3.5.0"
+  }
+}
