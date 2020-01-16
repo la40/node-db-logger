@@ -1,6 +1,6 @@
 {
   "name": "node-db-logger",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Records logs to database for better readability, performance and organization.",
   "license": "mit",
   "repository": "lachezargrigorov/node-db-logger",
