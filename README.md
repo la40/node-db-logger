@@ -28,7 +28,7 @@ All logs are saved into single collection having following structure.
 Create logger
 
 ```javascript
-const logger = require('../index').createLogger({
+const logger = require('node-db-logger').createLogger({
   // config 
   mongo: {
     url     : 'mongodb://localhost:27017',
