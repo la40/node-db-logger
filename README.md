@@ -26,7 +26,7 @@ All logs are saved into single collection having following structure.
 ## How to use
 
 Create logger
-- config: configuration object
+- config: configuration object, or string to get reusable logger
 - identifier: string, not required - will create a reusable logger if set
 
 ```javascript

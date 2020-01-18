@@ -15,8 +15,13 @@ class Logger {
   }
 
   delete (...types) {
-    for (const type of types) {
-      this.db.deleteMany(type)
+    if(types.length > 0) {
+      for (const type of types) {
+        this.db.deleteMany(type)
+      }
+    }
+    else {
+      this.db.deleteMany()
     }
   }
 
