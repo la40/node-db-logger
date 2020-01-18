@@ -45,7 +45,7 @@ const logger = require('node-db-logger').createLogger({
 
 Create a log record
 
-- type: the value of this parameter will go into the type property of the collection
+- type: the value of this parameter will go into the type field of the document
 - data: data to be records   
 
 ```javascript

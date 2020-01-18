@@ -34,8 +34,17 @@ class Logger {
   }
 }
 
+const __aLoggers = {}
+
 module.exports = {
-  createLogger (config) {
+  createLogger (config, logger = null) {
+    if (typeof logger === 'string') {
+      return __aLoggers[logger] = new Logger(config)
+    }
+    if (typeof config === 'string') {
+      if (!__aLoggers.hasOwnProperty(config)) throw  new Error(`Manager '${config}' doesn't exists!`)
+      return __aLoggers[config]
+    }
     return new Logger(config)
   }
 }
