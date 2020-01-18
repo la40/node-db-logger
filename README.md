@@ -13,11 +13,12 @@ A simple database logger.
 
 All logs are saved into single collection having following structure. 
 
-| property 	| description   	|
-|----------	|---------------	|
-| time     	| log timestamp 	|
-| type     	| log type      	|
-| data      | log data      	|
+| property 	        | description    |
+|------------------	|--------------- |
+| time     	        | log timestamp  |
+| identifier     	| identifier 	 |
+| type     	        | log type       |
+| data              | log data       |
 
 ## Installation
 
@@ -27,7 +28,7 @@ All logs are saved into single collection having following structure.
 
 Create logger
 - config: configuration object, or string to get reusable logger
-- identifier: string, not required - will create a reusable logger if set
+- identifier: string, not required - will create a reusable logger if set and will point every record in the collection to this identifier 
 
 ```javascript
 const logger = require('node-db-logger').createLogger({
@@ -78,18 +79,28 @@ logger.record('ClassName::lineNumber or something else', [1, 2, 3], [4, 5, 6], [
 
 ### delete(...types)
 
-Delete log records
+Delete the log records.   
+In use with unidentified logger will delete only unidentified records (identifier = NULL).  
+In use with identified reusable logger will delete only the identified records for current identifier.
 
-- types: types to be deleted, will delete all if types not set
+- types: types to be deleted, will delete all not set
 
 ```javascript
-// Delete all records
+// Delete all unidentified records or identified records of current identifier 
 logger.delete() 
 
-// Delete all records of "some type" and "error" 
+// Delete all unidentified records or identified records of current identifier of "some type" and "error" 
 const type = "some type" 
 logger.delete(type, 'error')
-```             
+```   
+
+### forceDelete(...types)
+
+Same as delete but ignoring the identifier rules.     
+
+### instance.identifier
+
+To get the identifier of this logger.       
 
 ## Config
 

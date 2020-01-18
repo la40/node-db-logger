@@ -27,19 +27,21 @@ class Mongo {
     })
   }
 
-  insertOne (type, data) {
+  insertOne (type, identifier, data) {
     this.openMongoConnection(db => {
       db.collection(this.collection).insertOne({
         time: new Date(),
+        identifier,
         type,
         data
       })
     })
   }
 
-  deleteMany (type) {
+  deleteMany (type, identifier) {
     this.openMongoConnection(db => {
       let query = {}
+      if (identifier !== false) query.identifier = identifier
       if (type) query.type = type
       db.collection(this.collection).deleteMany(query)
     })
