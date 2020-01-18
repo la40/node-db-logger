@@ -26,6 +26,8 @@ All logs are saved into single collection having following structure.
 ## How to use
 
 Create logger
+- config: configuration object
+- identifier: string, not required - will create a reusable logger if set
 
 ```javascript
 const logger = require('node-db-logger').createLogger({
@@ -39,7 +41,23 @@ const logger = require('node-db-logger').createLogger({
     collection: 'demoLogs'
   }
 })
-``` 
+
+// create reusable logger
+require('node-db-logger').createLogger({
+  // config 
+  mongo: {
+    url     : 'mongodb://localhost:27017',
+    options : {
+      useUnifiedTopology: true
+    },
+    database: 'demo',
+    collection: 'demoLogs'
+  }
+},'identifier') 
+
+// use it everywhere
+const reusableLogger = require('node-db-logger').createLogger('identifier')
+```
  
 ### record(type, ...data)
 
@@ -81,7 +99,3 @@ logger.delete(type, 'error')
 | mongo.options    	| false    	| {}      	| [Mongo Options](https://mongodb.github.io/node-mongodb-native/3.2/api/MongoClient.html)                	|
 | mongo.database   	| true     	|         	| Database name   	|
 | mongo.collection 	| false    	| logs    	| Collection name 	|   
-     
-
-
-                             
